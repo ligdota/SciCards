@@ -60,40 +60,31 @@ struct AnimatedButtonStyle: ButtonStyle {
 
 
 struct ChooseSubjectsView: View {
-    let columns = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible(), spacing: 16)
-    ]
-    
     var body: some View {
         NavigationStack {
             ZStack {
                 // Background gradient
-                LinearGradient(colors: [.red, .green, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
+                LinearGradient(colors: [.red, .green, .blue], startPoint: .topLeading,
+                    endPoint: .bottomTrailing)
+                .ignoresSafeArea()
                 
-                
-                VStack(spacing: 24) {
+                VStack(spacing: 30) {
                     
-                    // Header
+                    
                     VStack(spacing: 8) {
-                        Text("Choose Subjects to add")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                        
-                        Text("All 3 decks can be selected at once. Click on a deck to edit topics")
-                            .font(.subheadline)
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(.top, 40)
+                    Text("Choose Subjects to add")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
                     
-                    // Grid of subject buttons
+                    Text("Both subjects can be included at once. Click on a subject to add topics")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                }
+                
+                    // subject buttons
                     VStack(spacing: 35) {
-                        NavigationLink(destination: ChemTopics()) {
-                            SubjectButton(title: "Chemistry", color: .red, icon: "flasks")
-                        }
                         NavigationLink(destination: BiologyTopics()) {
                             SubjectButton(title: "Biology", color: .green, icon: "dna")
                         }

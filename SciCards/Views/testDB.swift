@@ -22,7 +22,7 @@ struct FlashcardTest: View {
         }
         .onAppear {
             do {
-                flashcards = try DatabaseManager.shared.dbQueue.read { db in
+                flashcards = try DB.queue.read { db in
                     try Flashcard.fetchAll(db)
                 }
             } catch {

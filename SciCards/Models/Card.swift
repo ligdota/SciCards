@@ -10,7 +10,7 @@ import GRDB
 import Foundation
 
 
-struct Flashcard : Codable, FetchableRecord, PersistableRecord {
+struct Flashcard: Identifiable, Codable, FetchableRecord, PersistableRecord {
     static let databaseTableName = "Flashcards"
     let id: String
     let subject: String
@@ -18,16 +18,17 @@ struct Flashcard : Codable, FetchableRecord, PersistableRecord {
     let format: String
     let question: String
     let answer: String
-    let wrongAnswers: String?
+    let wrong1: String?
+    let wrong2: String?
+    let wrong3: String?
     
     
-    
-    
-    var wrongsArray: [String] {
-        guard let data = wrongAnswers?.data(using: .utf8) else { return [] }
-        return (try? JSONDecoder().decode([String].self, from: data)) ?? []
-    }
     var allOptions: [String] {
-        (wrongsArray + [answer]).shuffled()
+     var options = [answer]
+        let wrongs = [wrong1, wrong2, wrong3].compactMap { $0 }
+        options.append(contentsOf: wrongs)
+        return options.shuffled()
     }
+
 }
+
