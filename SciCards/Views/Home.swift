@@ -1,78 +1,81 @@
 import SwiftUI
 
+
 struct MainView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background Gradient
-                LinearGradient(
-                    colors: [Color.blue.opacity(0.9), Color.purple.opacity(0.8)],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-
-                VStack(spacing: 40) {
-                    // App Title
-                    Text("Flash Learn")
-                        .font(.system(size: 48, weight: .bold, design: .rounded))
-                        .foregroundStyle(.white)
-                        .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 4)
-                        .padding(.top, 10)
-
-                    // Tagline
-                    Text("Master Biology & Computer Science The Flash Card Way")
-                        .font(.title3.weight(.medium))
-                        .foregroundColor(.white.opacity(0.9))
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 30)
-
-                    // Subject Cards
+                
+                LinearGradient(colors: [.green, .blue], startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                
+                
+                VStack(spacing: 80) {
+                    
+                    // MARK: Title Section
+                    VStack(spacing: 8) {
+                        // App Title
+                        Text("Flashway")
+                            .font(.system(size: 48, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+                        
+                        Text("This app is to help students strengthen their introductory science knowledge. Chemistry, Physics, Psychology, Sociology, and more coming soon.")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.title3.weight(.medium))
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.primary.opacity(0.8))
+                            .padding(.horizontal, 30)
+                    }
+                    .padding(.top, 60)
+    
+                    
+                    
+                    // MARK: Subjects
                     HStack(spacing: 35) {
-                        NavigationLink(destination: LearningView(subject: "biology")) {
-                            SubjectCardView(
-                                title: "Biology",
-                                icon: "leaf.fill",
-                                color: .green
-                            )
+                        NavigationLink(destination: BiologyTopics()) {
+                            SubjectCardView(title: "Biology", icon: "leaf.fill", color: .green)
                         }
-
-                        NavigationLink(destination: ComputerScienceView()) {
+                        
+                        NavigationLink(destination: LearningView(subject: "Computer Science", topics: ["Fundamentals"])) {
                             SubjectCardView(
                                 title: "Computer Science",
                                 icon: "desktopcomputer",
-                                color: .blue
+                                color: .blue,
                             )
                         }
                     }
-                    .padding(.top, 10)
-
+                    
+                    
                     // Learning Stats Section
-                    VStack(spacing: 15) {
-                        Text("Your Progress")
+                    VStack(spacing: 30) {
+                        Text("Progress stats coming soon!")
                             .font(.title2.bold())
-                            .foregroundColor(.white)
-
+            
+                        
                         HStack(spacing: 40) {
                             StatItemView(icon: "checkmark.circle.fill", label: "Cards Learned", value: "")
                             StatItemView(icon: "clock.fill", label: "Study Time", value: "")
                             StatItemView(icon: "flame.fill", label: "Streak", value: "")
                         }
                     }
+                    
                     .padding()
                     .background(.ultraThinMaterial)
                     .cornerRadius(20)
                     .shadow(radius: 10)
                     .padding(.horizontal)
-                    .padding(.top, 100)
-
+                    
                     Spacer()
                 }
-                .padding(.top, 0)
+                .frame(maxWidth: .infinity)
             }
         }
     }
 }
+
+
+
 
 struct SubjectCardView: View {
     var title: String

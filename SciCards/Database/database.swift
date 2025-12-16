@@ -29,10 +29,10 @@ struct DB {
             create: true
         )
         
-        let dbURL = documents.appendingPathComponent("flashcards.db")
+        let dbURL = documents.appendingPathComponent("flashcards-2.db")
         
         if !fileManager.fileExists(atPath: dbURL.path) {
-            guard let bundled = Bundle.main.url(forResource: "flashcards", withExtension: "db")
+            guard let bundled = Bundle.main.url(forResource: "flashcards-2", withExtension: "db")
             else {
                 fatalError("Missing important database files")
             }

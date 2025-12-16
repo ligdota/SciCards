@@ -18,17 +18,11 @@ struct Flashcard: Identifiable, Codable, FetchableRecord, PersistableRecord {
     let format: String
     let question: String
     let answer: String
-    let wrong1: String?
-    let wrong2: String?
-    let wrong3: String?
+    let wrong_answers: [String]
     
     
     var allOptions: [String] {
-     var options = [answer]
-        let wrongs = [wrong1, wrong2, wrong3].compactMap { $0 }
-        options.append(contentsOf: wrongs)
-        return options.shuffled()
+        ([answer] + wrong_answers).shuffled()
     }
-
 }
 

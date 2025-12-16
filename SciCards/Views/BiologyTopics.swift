@@ -26,10 +26,12 @@ struct BiologyTopics: View {
     @State private var viewModel = SubTopicViewModel()
     @State private var selectedTopics: Set<String> = []
     
+    @State private var navToflashcards = false
+    
     var body: some View {
             List {
                 VStack(spacing: 0) {
-                    Text("Biology Units")
+                    Text("Biology Topics")
                         .font(.largeTitle)
                         .bold()
                 }
@@ -39,8 +41,6 @@ struct BiologyTopics: View {
                             Text(topic)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            
-                            
                         }
                         
                         Spacer()
@@ -62,7 +62,7 @@ struct BiologyTopics: View {
                 .listStyle(.inset)
                 
                 Button(action: {
-                    startLearning()
+                    navToflashcards = true
                 }) {
                     Text("Start")
                         .font(.headline)
@@ -87,15 +87,18 @@ struct BiologyTopics: View {
             .onAppear {
                 viewModel.loadFlashcardCounts(for: topics)
             }
+        
+            .navigationDestination(isPresented: $navToflashcards) {
+                LearningView(subject: "Biology", topics: Array(selectedTopics)
+                              )
+            }
             
         }
     }
 
 
-        
-func startLearning() {
+
     
-}
 
 
 #Preview {

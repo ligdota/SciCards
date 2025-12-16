@@ -9,17 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                Text("Choose a Subject")
-                    .font(.largeTitle)
-                
-                NavigationLink("ChooseSubjects") {
-                    ChooseSubjectsView()
-                }
-                .buttonStyle(.borderedProminent)
-            }
-        }
+        MainView()
     }
 }
 

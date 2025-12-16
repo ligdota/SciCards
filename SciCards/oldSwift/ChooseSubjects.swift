@@ -89,7 +89,7 @@ struct ChooseSubjectsView: View {
                             SubjectButton(title: "Biology", color: .green, icon: "dna")
                         }
                 
-                        NavigationLink(destination: CSTopics()) {
+                        NavigationLink(destination: MainView()) {
                             SubjectButton(title: "Computer Science", color: .blue, icon: "computer")
                         }
                     }

@@ -13,10 +13,16 @@ import SwiftUI
 
 @MainActor
 class LearningViewModel: ObservableObject {
-    @Published private(set) var flashcards: [Flashcard] = []
+    @Published var flashcards: [Flashcard] = []
     @Published private(set) var currentIndex: Int = 0
     @Published var selectedAnswer: String? = nil
     @Published var showFeedback: Bool = false
+    
+    
+    init(previewCards: [Flashcard] = []) {
+        self.flashcards = previewCards
+        self.currentIndex = 0
+    }
     
     var currentCard: Flashcard? {
         guard currentIndex < flashcards.count else { return nil }
@@ -25,19 +31,28 @@ class LearningViewModel: ObservableObject {
     
     // load the flashcards for a given topic
     // for now just biology and computer science
-    func loadFlashcards(subject: String)  {
+    func loadFlashcards(subject: String, topics: [String])  async {
         do {
-            flashcards = try DB.queue.read { db in
+            let cards = try await DB.queue.read { db in
                 try Flashcard
                     .filter(Column("subject") == subject)
+                    .filter(topics.contains(Column("topic")))
                     .fetchAll(db)
                     .shuffled()
             }
+            print("Loading subject:", subject)
+            print("Loading topics:", topics)
+            print("Cards found:", cards.count)
+            
+            
+            self.flashcards = cards
+            print("loaded ", subject, "count", cards.count)
             currentIndex = 0
             selectedAnswer = nil
             showFeedback = false
         } catch {
-            fatalError("Error: Cant load flashcards: \(error)")
+            print("error loading flashcards", error)
+            self.flashcards = []
         }
     }
     

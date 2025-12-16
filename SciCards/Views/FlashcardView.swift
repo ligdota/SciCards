@@ -22,12 +22,12 @@ struct FlashcardView: View {
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(.ultraThinMaterial)
-                .cornerRadius(15)
+                .cornerRadius(15)          
             
             
             if card.format == "MC" {
                 VStack(spacing: 12) {
-                    ForEach(card.allOptions, id: \.self) { option in
+                    ForEach(card.wrong_answers, id: \.self) { option in
                         Button {
                             onSelectAnswer(option)
                         } label: {
@@ -37,8 +37,20 @@ struct FlashcardView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(12)
                         }
+                        
+                        
                         .disabled(showFeedback)
                     }
+                    Button {
+                        onSelectAnswer(card.answer)
+                    } label: {
+                        Text(card.answer)
+                            .frame(maxWidth: .infinity, minHeight: 50)
+                            .background(buttonColor(option: card.answer))
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                    
                     
                     if showFeedback {
                         Button("Next") {

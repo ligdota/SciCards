@@ -44,6 +44,9 @@ import Foundation
 struct LearningView: View {
     @StateObject var viewModel = LearningViewModel()
     let subject: String
+    let topics: [String]
+    
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ZStack {
@@ -70,16 +73,47 @@ struct LearningView: View {
                         }
                         
                         Button("Back to topics") {
-                            
+                            dismiss()
                         }
                     }
+                    .padding()
                 }
+                    
+
+                Button(action: {
+                    dismiss()
+                }) {
+                    Text("End learning")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom)
             }
+            .frame(maxHeight: .infinity)
             .task {
-                viewModel.loadFlashcards(subject: subject)
+                await viewModel.loadFlashcards(subject: subject, topics: topics)
             }
         }
     }
 }
+
+extension Flashcard {
+    static var test: Flashcard {
+        Flashcard(
+            id: "1",
+            subject: "Biology",
+            topic: "testing topic",
+            format: "Self",
+            question: "this is a test question",
+            answer: "this is a test answer",
+            wrong_answers: [""]
+        )
+    }
+}
+
+
+
     
     
