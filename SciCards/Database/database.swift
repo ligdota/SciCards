@@ -31,20 +31,17 @@ struct DB {
         
         let dbURL = documents.appendingPathComponent("flashcards-2.db")
         
-        if !fileManager.fileExists(atPath: dbURL.path) {
-            guard let bundled = Bundle.main.url(forResource: "flashcards-2", withExtension: "db")
+        if fileManager.fileExists(atPath: dbURL.path) {
+            try fileManager.removeItem(at: dbURL) // delete old db
+        }
+         guard let bundled = Bundle.main.url(forResource: "flashcards-2", withExtension: "db")
             else {
                 fatalError("Missing important database files")
             }
             
             try fileManager.copyItem(at: bundled, to: dbURL)
-        }
-        return dbURL
+            return dbURL
     }
-    
-    
-    
-    
     
     static func countQuestionsInSubtopic(in topic: String) throws -> Int {
         try queue.read { db in

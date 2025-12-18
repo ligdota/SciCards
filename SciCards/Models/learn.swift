@@ -33,6 +33,19 @@ class LearningViewModel: ObservableObject {
     // for now just biology and computer science
     func loadFlashcards(subject: String, topics: [String])  async {
         do {
+            try await DB.queue.read { db in
+                let rows = try Row.fetchAll(db, sql: "SELECT * FROM Flashcards WHERE subject = ?", arguments: [subject])
+                
+                for (index, row) in rows.enumerated() {
+                    do {
+                        let card = try Flashcard(row: row)
+                        print("Card \(index):", card)
+                    } catch {
+                        print("❌ Failed to decode row \(index):", row)
+                        print("Error:", error)
+                    }
+                }
+            }
             let cards = try await DB.queue.read { db in
                 try Flashcard
                     .filter(Column("subject") == subject)

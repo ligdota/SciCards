@@ -5,72 +5,74 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
+                                
                 LinearGradient(colors: [.green, .blue], startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                 
-                
-                VStack(spacing: 80) {
-                    
-                    // MARK: Title Section
-                    VStack(spacing: 8) {
-                        // App Title
-                        Text("Flashway")
-                            .font(.system(size: 48, weight: .bold, design: .rounded))
-                            .foregroundStyle(.white)
-                            .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+                ScrollView {
+                    VStack(spacing: 20) {
                         
-                        Text("This app is to help students strengthen their introductory science knowledge. Chemistry, Physics, Psychology, Sociology, and more coming soon.")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .font(.title3.weight(.medium))
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.primary.opacity(0.8))
-                            .padding(.horizontal, 30)
-                    }
-                    .padding(.top, 60)
-    
-                    
-                    
-                    // MARK: Subjects
-                    HStack(spacing: 35) {
-                        NavigationLink(destination: BiologyTopics()) {
-                            SubjectCardView(title: "Biology", icon: "leaf.fill", color: .green)
+                        // MARK: Title Section
+                        VStack(spacing: 8) {
+                            // App Title
+                            Text("Sci cards")
+                                .font(.system(size: 48, weight: .bold, design: .rounded))
+                                .foregroundStyle(.white)
+                                .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+                            
+                            Text("This app is to help students strengthen their introductory science knowledge. Chemistry, Physics, Psychology, Sociology, and more coming soon.")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.title3.weight(.medium))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.primary.opacity(0.8))
+                                .padding(.horizontal, 30)
+                        }
+        
+                        
+                        
+                        
+                        // MARK: Subjects
+                        HStack(spacing: 35) {
+                            NavigationLink(destination: BiologyTopics()) {
+                                SubjectCardView(title: "Biology", icon: "leaf.fill", color: .green)
+                            }
+                            
+                            NavigationLink(destination: LearningView(subject: "Computer Science", topics: ["Fundamentals"])) {
+                                SubjectCardView(
+                                    title: "Computer Science",
+                                    icon: "desktopcomputer",
+                                    color: .blue,
+                                )
+                            }
                         }
                         
-                        NavigationLink(destination: LearningView(subject: "Computer Science", topics: ["Fundamentals"])) {
-                            SubjectCardView(
-                                title: "Computer Science",
-                                icon: "desktopcomputer",
-                                color: .blue,
-                            )
-                        }
-                    }
-                    
-                    
-                    // Learning Stats Section
-                    VStack(spacing: 30) {
-                        Text("Progress stats coming soon!")
-                            .font(.title2.bold())
-            
                         
-                        HStack(spacing: 40) {
-                            StatItemView(icon: "checkmark.circle.fill", label: "Cards Learned", value: "")
-                            StatItemView(icon: "clock.fill", label: "Study Time", value: "")
-                            StatItemView(icon: "flame.fill", label: "Streak", value: "")
+                        // Learning Stats Section
+                        VStack(spacing: 30) {
+                            Text("Progress stats coming soon!")
+                                .font(.title2.bold())
+                            
+                            
+                            HStack(spacing: 40) {
+                                StatItemView(icon: "checkmark.circle.fill", label: "Cards Learned", value: "")
+                                StatItemView(icon: "clock.fill", label: "Study Time", value: "")
+                                StatItemView(icon: "flame.fill", label: "Streak", value: "")
+                            }
                         }
+                        
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(20)
+                        .shadow(radius: 10)
+                        .padding(.horizontal)
+                        
+                    
                     }
-                    
-                    .padding()
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(20)
-                    .shadow(radius: 10)
-                    .padding(.horizontal)
-                    
-                    Spacer()
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
             }
         }
+        
     }
 }
 

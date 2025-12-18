@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showMainView: Bool = true
+    
     var body: some View {
-        MainView()
+   
+        Color.clear
+            .fullScreenCover(isPresented: $showMainView) {
+            MainView()
+        }
     }
 }
 
