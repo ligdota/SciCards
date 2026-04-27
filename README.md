@@ -1,0 +1,1 @@
+SciCards is a lightweight iOS flashcard application designed to help students study scientific material more effectively. Users can create custom decks, review concepts on demand, and reinforce learning through repeated exposure. The app focuses on clean UX and fast access to study material for efficient revision on the go.
