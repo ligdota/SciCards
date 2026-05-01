@@ -52,3 +52,4 @@ The repository includes a `createdb.py` script that converts the source Excel wo
 ## Status
 
 This project is an active educational app prototype. The current code already supports studying topic-based flashcards, while progress tracking and broader subject coverage are still being expanded.
+Currently the app is not ready for production, but hope to be deployed on the IOS App store by Aug 2026.
