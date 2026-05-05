@@ -22,9 +22,12 @@ The current app focuses on Biology topics and an early Computer Science path. Fl
 
 
   <div>
-    <img width="256" height="256" alt="IMG_0138" src="https://github.com/user-attachments/assets/2fcb93ec-90e5-431c-aee7-8defd7b9706c" />
-    <img width="256" height="256" alt="IMG_0139" src="https://github.com/user-attachments/assets/089fab03-84a3-4c53-bae5-feae16953a0d" />
-    <img width="256" height="256" alt="IMG_0143" src="https://github.com/user-attachments/assets/fc843c64-c321-4569-956f-a3a81c82a19c" />
+    The main screen
+    <img width="256" height="350" alt="IMG_0138" src="https://github.com/user-attachments/assets/2fcb93ec-90e5-431c-aee7-8defd7b9706c" />
+    Biology topic selection
+    <img width="256" height="350" alt="IMG_0139" src="https://github.com/user-attachments/assets/089fab03-84a3-4c53-bae5-feae16953a0d" />
+    Learning
+    <img width="256" height="350" alt="IMG_0143" src="https://github.com/user-attachments/assets/fc843c64-c321-4569-956f-a3a81c82a19c" />
 </div>
 ## Tech Stack
 
