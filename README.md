@@ -9,12 +9,22 @@ The current app focuses on Biology topics and an early Computer Science path. Fl
 ## Features
 
 - SwiftUI interface for iPhone and iPad
-- topic-based study flow for Biology
+- Topic-based study flow for Biology
 - Computer Science starter deck support
-- randomized flashcard sessions
-- Mainly focused on self check questions to introduce more tools for students to practice active recall
-- bundled SQLite database copied into the app documents directory at launch
-- card counts loaded per topic through the data layer
+- Randomized flashcard sessions
+- Self check questions to introduce more tools for students to practice active recall
+
+
+
+
+
+
+
+
+
+  <img width="585" height="1266" alt="IMG_0143" src="https://github.com/user-attachments/assets/fc843c64-c321-4569-956f-a3a81c82a19c" />
+<img width="585" height="1266" alt="IMG_0139" src="https://github.com/user-attachments/assets/089fab03-84a3-4c53-bae5-feae16953a0d" />
+<img width="585" height="1266" alt="IMG_0138" src="https://github.com/user-attachments/assets/2fcb93ec-90e5-431c-aee7-8defd7b9706c" />
 
 ## Tech Stack
 
